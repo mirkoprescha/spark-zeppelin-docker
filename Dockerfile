@@ -20,8 +20,9 @@ RUN apt-get update && apt-get install -y default-jdk
 
 
 
-
+##########################################
 # SPARK
+##########################################
 RUN mkdir /usr/local/spark
 ARG SPARK_ARCHIVE=http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
 ENV SPARK_HOME /usr/local/spark
@@ -32,10 +33,11 @@ RUN curl -s ${SPARK_ARCHIVE} | tar -xz -C  /usr/local/spark --strip-components=1
 # for spark history server
 COPY spark-defaults.conf ${SPARK_HOME}/conf/
 RUN mkdir /tmp/spark-events
-RUN ${SPARK_HOME}/sbin/start-history-server.sh
 
 
+##########################################
 # Zeppelin
+##########################################
 RUN mkdir /usr/zeppelin
 
 RUN curl -s http://apache.mirror.digionline.de/zeppelin/zeppelin-${ZEPPELIN_VERSION}/zeppelin-${ZEPPELIN_VERSION}-bin-all.tgz | tar -xz -C /usr/zeppelin
@@ -58,5 +60,5 @@ RUN mkdir /work
 WORKDIR /work
 
 
-ENTRYPOINT  $ZEPPELIN_HOME/bin/zeppelin-daemon.sh start  && bash
+ENTRYPOINT  /usr/local/spark/sbin/start-history-server.sh; $ZEPPELIN_HOME/bin/zeppelin-daemon.sh start  && bash
 
