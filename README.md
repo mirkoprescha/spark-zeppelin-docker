@@ -55,7 +55,7 @@ After changes in `Dockerfile` goto project home dir and run
 docker build  -t mirkoprescha/spark-zeppelin-docker .
 ```
 
-Push to docker hub
+This repo is connected to an automated build in docker hub, so *no push* to docker hub is required.
 ```
 docker push  mirkoprescha/spark-zeppelin-docker
 ```
