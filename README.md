@@ -1,7 +1,7 @@
 # Purpose 
 
 This docker image provides a local *spark* installation with *zeppelin* and a running *spark-history-server*.
-It is uploaded in [dockerhub](https://hub.docker.com/r/mirkoprescha/spark-zeppelin/) in a public repository.
+It is uploaded in [dockerhub](https://hub.docker.com/r/mirkoprescha/spark-zeppelin-docker/) in a public repository.
 
 I use it to evaluate independently spark code in a more convenient way then a spark-shell.
  
@@ -12,7 +12,7 @@ I use it to evaluate independently spark code in a more convenient way then a sp
  
 ## Start the container
 ```
-  docker run -it -p 18080:18080 -p 8088:8080   mirkoprescha/spark-zeppelin
+  docker run -it -p 18080:18080 -p 8088:8080   mirkoprescha/spark-zeppelin-docker
 ```
 
 ## Open Zeppelin and Spark History Server  
@@ -52,12 +52,12 @@ spark-submit   --class <your-class-name-with-package> \
  
 After changes in `Dockerfile` goto project home dir and run
 ```
-docker build  -t mirkoprescha/spark-zeppelin .
+docker build  -t mirkoprescha/spark-zeppelin-docker .
 ```
 
 Push to docker hub
 ```
-docker push  mirkoprescha/spark-zeppelin
+docker push  mirkoprescha/spark-zeppelin-docker
 ```
 
 
