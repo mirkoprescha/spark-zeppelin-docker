@@ -7,7 +7,7 @@ I use it to evaluate independently spark code in a more convenient way then a sp
  
 ## Components
 - spark version="2.2.0"
-- zeppelin version="0.7.1"
+- zeppelin version="0.7.2"
 - hadoop version="2.7"
  
 ## Start the container

@@ -1,7 +1,7 @@
 FROM ubuntu:16.10
 MAINTAINER mirkoprescha
 
-ARG ZEPPELIN_VERSION="0.7.1"
+ARG ZEPPELIN_VERSION="0.7.2"
 ARG SPARK_VERSION="2.2.0"
 ARG HADOOP_VERSION="2.7"
 
@@ -39,8 +39,7 @@ RUN mkdir /tmp/spark-events
 # Zeppelin
 ##########################################
 RUN mkdir /usr/zeppelin
-
-RUN curl -s http://apache.mirror.digionline.de/zeppelin/zeppelin-${ZEPPELIN_VERSION}/zeppelin-${ZEPPELIN_VERSION}-bin-all.tgz | tar -xz -C /usr/zeppelin
+RUN curl -s http://mirror.softaculous.com/apache/zeppelin/zeppelin-${ZEPPELIN_VERSION}/zeppelin-${ZEPPELIN_VERSION}-bin-all.tgz | tar -xz -C /usr/zeppelin
 
 RUN echo '{ "allow_root": true }' > /root/.bowerrc
 
