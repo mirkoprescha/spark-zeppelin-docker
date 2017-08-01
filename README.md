@@ -6,13 +6,13 @@ It is uploaded in [dockerhub](https://hub.docker.com/r/mirkoprescha/spark-zeppel
 I use it to evaluate independently spark code in a more convenient way then a spark-shell.
  
 ## Components
-- spark version="2.1.0"
+- spark version="2.2.0"
 - zeppelin version="0.7.1"
 - hadoop version="2.7"
  
 ## Start the container
 ```
-  docker run -it -p 18080:18080 -p 8088:8080   mirkoprescha/spark-zeppelin-docker
+  docker run -it -p 18080:18080 -p 8088:8080 -d mirkoprescha/spark-zeppelin-docker
 ```
 
 ## Open Zeppelin and Spark History Server  
@@ -55,7 +55,7 @@ After changes in `Dockerfile` goto project home dir and run
 docker build  -t mirkoprescha/spark-zeppelin-docker .
 ```
 
-This repo is connected to an automated build in docker hub, so *no push* to docker hub is required.
+This repo is connected to an automated build in docker hub, so the following *no push* to docker hub is not required.
 ```
 docker push  mirkoprescha/spark-zeppelin-docker
 ```
