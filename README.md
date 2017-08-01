@@ -6,7 +6,7 @@ It is uploaded in [dockerhub](https://hub.docker.com/r/mirkoprescha/spark-zeppel
 I use it to evaluate independently spark code in a more convenient way then a spark-shell.
  
 ## Components
-- spark version="2.2.0"
+- spark version="2.1.0"
 - zeppelin version="0.7.2"
 - hadoop version="2.7"
  
