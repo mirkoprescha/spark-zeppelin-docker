@@ -1,7 +1,7 @@
-FROM ubuntu:16.10
+FROM ubuntu:18.10
 
-ARG ZEPPELIN_VERSION="0.7.2"
-ARG SPARK_VERSION="2.2.0"
+ARG ZEPPELIN_VERSION="0.8.1"
+ARG SPARK_VERSION="2.4.3"
 ARG HADOOP_VERSION="2.7"
 
 LABEL maintainer "mirkoprescha"
@@ -12,14 +12,14 @@ LABEL hadoop.version=${HADOOP_VERSION}
 # Install Java and some tools
 RUN apt-get -y update &&\
     apt-get -y install curl less &&\
-    apt-get install -y default-jdk &&\
+    apt-get install -y openjdk-8-jdk &&\
     apt-get -y install vim
 
 
 ##########################################
 # SPARK
 ##########################################
-ARG SPARK_ARCHIVE=http://d3kbcqa49mib13.cloudfront.net/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
+ARG SPARK_ARCHIVE=http://artfiles.org/apache.org/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
 RUN mkdir /usr/local/spark &&\
     mkdir /tmp/spark-events    # log-events for spark history server
 ENV SPARK_HOME /usr/local/spark
@@ -31,12 +31,12 @@ COPY spark-defaults.conf ${SPARK_HOME}/conf/
 
 
 
+
 ##########################################
 # Zeppelin
 ##########################################
 RUN mkdir /usr/zeppelin &&\
     curl -s http://mirror.softaculous.com/apache/zeppelin/zeppelin-${ZEPPELIN_VERSION}/zeppelin-${ZEPPELIN_VERSION}-bin-all.tgz | tar -xz -C /usr/zeppelin
-
 RUN echo '{ "allow_root": true }' > /root/.bowerrc
 
 ENV ZEPPELIN_PORT 8080
